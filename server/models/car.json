@@ -1,0 +1,55 @@
+{
+  "name": "Car",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "strict": true,
+  "allowExtendedOperators": true,
+  "options": {
+    "mongodb": {
+      "allowExtendedOperators": true
+    }
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "fuel": {
+      "type": "number",
+      "default": 0
+    },
+    "interior": {
+      "type": "object",
+      "default": {}
+    }
+  },
+  "methods": {
+    "prototype.updateWithDotNotation": {
+      "http": {
+        "path": "/withDotNotation",
+        "verb": "patch"
+      },
+      "accepts": [
+        {
+          "arg": "seats",
+          "type": "number",
+          "required": true
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "root": true
+      }
+    },
+    "prototype.updateWithMongoExtendedOperators": {
+      "http": {
+        "path": "/withMongoExtendedOperators",
+        "verb": "patch"
+      },
+      "returns": {
+        "type": "object",
+        "root": true
+      }
+    }
+  }
+}
